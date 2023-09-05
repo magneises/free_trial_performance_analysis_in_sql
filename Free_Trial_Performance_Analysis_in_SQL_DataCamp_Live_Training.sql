@@ -23,20 +23,20 @@ You’ll summarize and aggregate data to calculate the sorts of metrics that are
 -- 1. Getting Familiar with the Data --
 -- We will query the Free Trials & Purchases tables, and produce graphs showing the volume of both of these over time.
 -- 1a) Group trials by the month of free_trial_start_date (and order by the same).Count the rows as num_free_trials.
-/*
+
 SELECT
 	date_trunc('month', free_trial_start_date) AS month,
 	COUNT(*) AS num_free_trials
 FROM trials
 	GROUP BY month
 	ORDER BY month;
-*/
+
 
 
 -- 1b) Group purchases by the month of purchase_date (and order by the same).
 -- Count the rows as num_purchases, and sum purchase_value as usd_value.
 --Call the output purchases_per_month. 
-/*
+
 SELECT
 	date_trunc('month', purchase_date) AS month,
 	COUNT(*) AS purchases_per_month,
@@ -44,7 +44,7 @@ SELECT
 FROM purchases
 	GROUP BY month
 	ORDER BY month;
-*/
+
 
 
 -- 2. Data Aggregation 1 - Velocity Metrics by Month
@@ -52,7 +52,7 @@ FROM purchases
 -- 2a) Now that we can aggregate the data by month, create both summaries as Common Table Expressions (CTEs), and left join our purchases per month 
 -- against the free trials per month to get the results into a combined results table.
 
-/*
+
 WITH free_trials_per_month AS (
         SELECT
                 date_trunc('month', free_trial_start_date) AS month,
@@ -79,12 +79,12 @@ SELECT
 FROM free_trials_per_month
         LEFT JOIN purchases_per_month
         ON purchases_per_month.month = free_trials_per_month.month;
-*/
+
 
 -- Do you notice that there's some data missing? When we left join purchases_per_month, we only match against months that exist in free_trials_per_month. 
 -- There are several ways to solve this.
 -- 2b) Do the same aggregation again, but this time outer join the results.
-/*
+
 WITH free_trials_per_month AS (
         SELECT
                 date_trunc('month', free_trial_start_date) AS month,
@@ -111,11 +111,10 @@ SELECT
 FROM free_trials_per_month
         FULL OUTER JOIN purchases_per_month
         ON purchases_per_month.month = free_trials_per_month.month;
-*/    
+   
  
         
 -- Using coalesce
-/*
 WITH free_trials_per_month AS (
         SELECT
                 date_trunc('month', free_trial_start_date) AS month,
@@ -142,7 +141,7 @@ SELECT
 FROM free_trials_per_month
         FULL OUTER JOIN purchases_per_month
         ON purchases_per_month.month = free_trials_per_month.month; 
-*/
+
 
 -- Gaps in your summary data is a common problem when using SQL for data analysis. It happens when you have data sets that don't quite match up, or gaps in your time frame.
 -- Another way to solve this would be to avoid joining the tables directly to one another, and instead join both tables to a base table that contains all the rows you 
@@ -170,7 +169,7 @@ However, they take time to mature. You don't always want to spend today's tradin
 
 
 -- 3a) Select all columns in trials, and left join the columns in purchases on their shared trial_id column.
-/*
+
 SELECT 
         trials.trial_id, 
         trials.free_trial_start_date,
@@ -180,7 +179,7 @@ SELECT
 FROM trials
         LEFT JOIN purchases
                 ON purchases.trial_id = trials.trial_id;
-*/
+
 
 -- Do you notice that there's some data missing? When we left join purchases_per_month, we only match against months that exist in free_trials_per_month. 
 -- There are several ways to solve this.
@@ -188,7 +187,7 @@ FROM trials
 
 --3b) Aggregate all the data by the month of the Free Trial start, and calculate the same metrics as before; num_free_trials, num_purchases, and usd_value. 
 -- Remember that sum and count both ignore NULL values.
-/*
+
 WITH free_trials_and_purchases AS (
         SELECT
                 trials.trial_id,
@@ -209,7 +208,7 @@ SELECT
 FROM free_trials_and_purchases
         GROUP BY month
         ORDER BY month
-*/
+
 
 /*
 Counting the non-nulls is very handy, but you should be careful with this kind of approach as different versions of SQL may handle NULL values differently. 
@@ -223,7 +222,7 @@ for every purchase (and no purchase date when there is no purchase).
 -- Using the Cohort table we've already put together, we will calculate an average value per Free Trial for each month.
 
 -- 4a) Take the aggregation above, and create an additional metric called cohort_value_per_free_trial by dividing purchase_value by num_free_trials.
-/*
+
 WITH  free_trials_and_purchases AS (
 	SELECT
                 trials.trial_id,
@@ -244,7 +243,7 @@ SELECT
 FROM free_trials_and_purchases
         GROUP BY month
         ORDER BY month;
-*/
+
 
 -- 5. Dimensional Breakdown
 -- We will break down our average value per Free Trial by Region, to see how the values differ.
