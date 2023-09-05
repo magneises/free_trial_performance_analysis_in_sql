@@ -7,7 +7,7 @@ How much is a free trial worth? In this SQL live training, you'll learn how to u
 
 To access the data, create a **PostgreSQL integration** with the following details:
 
-- host: `workspacedemodb.datacamp.com`
+host: `workspacedemodb.datacamp.com`
 - port: `5432`
 - database: `free_trial_performance`
 - username: `competition_free_trial`
@@ -52,5 +52,9 @@ _Optional_ - a list of prices of the product by region over time. This table wil
 
 ### Exercise 1c Completed Chart
 ![image](https://datacamp-practice.s3.us-east-2.amazonaws.com/free_trial_performance_analysis_in_sql/datacamp_free_trial_performance_analysis_in_sql_exercise1c_chart_screenshot.png)
+
+
+### Exercise 5b Completed Chart
+Create a graph of cohort_value_per_free_trial by Month & Region
 
 
