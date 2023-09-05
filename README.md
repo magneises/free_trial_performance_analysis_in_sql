@@ -46,6 +46,11 @@ _Optional_ - a list of prices of the product by region over time. This table wil
 - Region - the customer's world region, as in the Free Trials table.
 - The price that will be locked in at the beginning of the customer's Free Trial, based on their Free Trial Start Month & Region.
 
-![image](https://datacamp-practice.s3.us-east-2.amazonaws.com/free_trial_performance_analysis_in_sql/free_trial_performance_analysis_in_sql_schema.png, "Data Schema")
+### Data Schema
+![image](https://datacamp-practice.s3.us-east-2.amazonaws.com/free_trial_performance_analysis_in_sql/free_trial_performance_analysis_in_sql_schema.png)
+
+
+### Exercise 1c Completed Chart
+![image](https://datacamp-practice.s3.us-east-2.amazonaws.com/free_trial_performance_analysis_in_sql/datacamp_free_trial_performance_analysis_in_sql_exercise1c_chart_screenshot.png)
 
 
