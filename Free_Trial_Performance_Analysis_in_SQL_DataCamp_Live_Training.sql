@@ -46,11 +46,7 @@ FROM purchases
 	ORDER BY month;
 
 -- 1c) Create a line graph of num_purchases by month
-![image](https://datacamp-practice.s3.us-east-2.amazonaws.com/free_trial_performance_analysis_in_sql/datacamp_free_trial_performance_analysis_in_sql_exercise1c_chart_screenshot.png)
-
-
-
-
+-- See README.md file
 
 
 -- 2. Data Aggregation 1 - Velocity Metrics by Month
@@ -255,7 +251,7 @@ FROM free_trials_and_purchases
 -- We will break down our average value per Free Trial by Region, to see how the values differ.
 
 -- a) Taking the same code as before, introduce and group by the additional dimension, region. Call the resultant table cohort_value_by_month_and_region.
-
+/*
 WITH free_trials_and_purchases AS (
 	SELECT
                 trials.trial_id,
@@ -288,7 +284,10 @@ SELECT
         (usd_value::float) / (nullif(num_free_trials, 0)::float) AS cohort_value_per_free_trial
 FROM summary_by_month
         ORDER BY month, region;
-        
+*/
+
+-- 5b. Create a graph of cohort_value_per_free_trial by Month & Region
+-- See README.md file
      
         
         
