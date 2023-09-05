@@ -46,6 +46,6 @@ _Optional_ - a list of prices of the product by region over time. This table wil
 - Region - the customer's world region, as in the Free Trials table.
 - The price that will be locked in at the beginning of the customer's Free Trial, based on their Free Trial Start Month & Region.
 
-![image](https://drive.google.com/file/d/11XDvDbehp1QIr_AS5uYjkKANsRcS9NVX/view?usp=sharing "Free Trial Performance Analysis in SQL Data Schema")
+![image](https://drive.google.com/file/d/11XDvDbehp1QIr_AS5uYjkKANsRcS9NVX/view?usp=sharing)
 
 
