@@ -45,6 +45,12 @@ FROM purchases
 	GROUP BY month
 	ORDER BY month;
 
+-- 1c) Create a line graph of num_purchases by month
+![image](https://datacamp-practice.s3.us-east-2.amazonaws.com/free_trial_performance_analysis_in_sql/datacamp_free_trial_performance_analysis_in_sql_exercise1c_chart_screenshot.png)
+
+
+
+
 
 
 -- 2. Data Aggregation 1 - Velocity Metrics by Month
